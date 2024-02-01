@@ -1,4 +1,46 @@
 <?php
+//function
+//function sayHello($name='Gentleman')
+//{
+//    echo 'good morning '.$name;
+//}
+//
+//sayHello();
+
+
+
+
+
+//function formatProduct($product)
+//{
+//    return $product['name'].' costs '.$product['price'].' to buy <br/>';
+//}
+//
+//
+//$products=[
+//    ['name'=>'shiny star','price'=>20],
+//    ['name'=>'green shell','price'=>10],
+//    ['name'=>'red shell','price'=>15],
+//    ['name'=>'gold coin','price'=>5],
+//    ['name'=>'lightning bolt','price'=>40],
+//    ['name'=>'banana skin','price'=>2],
+//];
+//
+//
+//
+//foreach ($products as $p)
+//{
+//   echo formatProduct($p);
+//}
+
+function sayHello($name='shihab',$time='morning')
+{
+    echo 'good '.$time.' '.$name;
+}
+sayHello('raihan','night');
+
+
+
 
 
 
