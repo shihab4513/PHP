@@ -1,16 +1,6 @@
 <?php
 
-//echo 5<10;
-//echo 5==10;
-//if false doesnt print anything but true print 1
-//echo 5>10;
-//echo 5!=10;
-//echo 5<=10;
-//if we do == it doesnt take consideration for data type so best and exact comparison will be ===
-//echo 5=='5';
-//echo 5==='5';
-//echo true==1;
-//echo true===1;
+
 
 
 
