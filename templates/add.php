@@ -1,5 +1,6 @@
 <?php
-
+$title=$ingredient=$email='';
+$errors=array('email'=>'','title'=>'','ingredient'=>'');
 //Get method
 //if (isset($_GET['submit']))
 //{
@@ -19,7 +20,8 @@ if (isset($_POST['submit']))
 //check mail
     if (empty($_POST['email']))
     {
-        echo 'An email is required <br/>';
+//        echo 'An email is required <br/>';
+        $errors['email']='An email is required <br/>';
     }
     else{
 //        echo htmlspecialchars($_POST['email']) ;
@@ -27,34 +29,39 @@ if (isset($_POST['submit']))
         $email=$_POST['email'];
         if (!filter_var($email,FILTER_VALIDATE_EMAIL))
         {
-            echo 'Email address must be valid email address<br/>';
+//            echo 'Email address must be valid email address<br/>';
+            $errors['email']='Email address must be valid email address<br/>';
         }
     }
     //check title
     if (empty($_POST['title']))
     {
-        echo 'A title is required <br/>';
+//        echo 'A title is required <br/>';
+        $errors['title']='A title is required <br/>';
     }
     else{
 //        echo htmlspecialchars($_POST['title']) ;
         $title=$_POST['title'];
         if (!preg_match('/^[a-zA-Z\s]+$/',$title))
         {
-            echo 'Title must be letters and spaces only';
+//            echo 'Title must be letters and spaces only';
+            $errors['title']='Title must be letters and spaces only';
         }
 
     }
     //check ingredient
     if (empty($_POST['ingredient']))
     {
-        echo 'An least one ingredient is required <br/>';
+//        echo 'An least one ingredient is required <br/>';
+        $errors['ingredient']='An least one ingredient is required <br/>';
     }
     else{
 //        echo htmlspecialchars($_POST['ingredient']) ;
         $ingredient=$_POST['ingredient'];
         if (!preg_match('/^([a-zA-Z\s]+)(,\s*[a-zA-Z\s]*)*$/',$ingredient))
         {
-            echo 'Ingredients must be comma separated list';
+//            echo 'Ingredients must be comma separated list';
+            $errors['ingredient']='Ingredients must be comma separated list';
         }
     }
 
@@ -80,11 +87,20 @@ if (isset($_POST['submit']))
     <h4 class="center">Add a Pizza</h4>
     <form action="add.php" class="white" method="POST">
         <label for="">Your Email: </label>
-        <input type="email" name="email">
+        <input type="email" name="email" value="<?php echo htmlspecialchars($email)?>">
+        <div class="red-text">
+            <?php echo $errors['email']?>
+        </div>
         <label for="">Pizza title:  </label>
-        <input type="text" name="title">
+        <input type="text" name="title" value="<?php echo htmlspecialchars($title)?>">
+        <div class="red-text">
+            <?php echo $errors['title']?>
+        </div>
         <label for="">Ingredients (comma separated) </label>
-        <input type="text" name="ingredient">
+        <input type="text" name="ingredient" value="<?php echo htmlspecialchars($ingredient)?>">
+        <div class="red-text">
+            <?php echo $errors['ingredient']?>
+        </div>
          <div class="center">
              <input type="submit" name="submit" value="submit" class="btn brand z-depth-0">
          </div>
