@@ -64,6 +64,17 @@ if (isset($_POST['submit']))
             $errors['ingredient']='Ingredients must be comma separated list';
         }
     }
+//    array_filter function checks whether there is any value in $errors array, if it dont find any error then it will return false else it will return true
+    if (array_filter($errors))
+    {
+       echo 'Errors in the form';
+
+    }
+    else{
+//        echo 'form is valid';
+//        basically if the form is valid below code redirect page to index.php file
+        header('Location:index.php');
+    }
 
 
 
