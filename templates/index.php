@@ -1,13 +1,8 @@
 <?php
 
 //MySQLi or PDO
-//connect to database
-$conn=mysqli_connect('localhost','shihab4513','shihab4513','ninza_pizza');
-//check the connection
-if (!$conn)
-{
-    echo 'Connection error: '.mysqli_error();
-}
+global $conn;
+include "db_connect.php";
 //write query for all pizzas
 $sql='SELECT id,title,ingredients,email FROM pzzas ORDER BY created_at';
 //Make query and get the result

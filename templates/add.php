@@ -1,4 +1,8 @@
 <?php
+
+global $conn;
+include "db_connect.php";
+
 $title=$ingredient=$email='';
 $errors=array('email'=>'','title'=>'','ingredient'=>'');
 //Get method
@@ -71,9 +75,28 @@ if (isset($_POST['submit']))
 
     }
     else{
+
+        $email=mysqli_real_escape_string($conn,$_POST['email']);
+        $title=mysqli_real_escape_string($conn,$_POST['title']);
+        $ingredient=mysqli_real_escape_string($conn,$_POST['ingredient']);
+//        create sql
+        $sql="INSERT INTO pzzas(title,email,ingredients) VALUES('$title','$email','ingredient')";
+//        save to db and check
+        if (mysqli_query($conn,$sql))
+        {
+//            success
+            header('Location:index.php');
+
+        }
+        else{
+//            error
+            echo 'query error: '.mysqli_error($conn);
+        }
+
 //        echo 'form is valid';
 //        basically if the form is valid below code redirect page to index.php file
-        header('Location:index.php');
+
+
     }
 
 
