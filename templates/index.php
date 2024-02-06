@@ -22,6 +22,9 @@ mysqli_free_result($result);
 mysqli_close($conn);
 
 //print_r($pzzas);
+//print_r(explode(',',$pzzas[0]['ingredients']));
+$i=0;
+
 
 ?>
 
@@ -43,7 +46,12 @@ mysqli_close($conn);
             <div class="card z-depth-0">
                 <div class="card-content center">
                     <h6><?php echo htmlspecialchars($pizza['title'])?></h6>
-                    <div><?php echo htmlspecialchars($pizza['ingredients'])?></div>
+
+                    <ul>
+                        <?php foreach (explode(',',$pzzas[$i]['ingredients']) as $ing){ ?>
+                        <li><?php echo htmlspecialchars($ing); ?></li>
+                        <?php  } $i=$i+1; ?>
+                    </ul>
                     <div><?php echo htmlspecialchars($pizza['email'])?></div>
                 </div>
                 <div class="card-action right-align">
