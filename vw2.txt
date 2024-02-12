@@ -1,0 +1,34 @@
+CREATE DATABASE hospital
+CREATE TABLE doctor(
+   d_id int(11) PRIMARY KEY,
+   d_name varchar(30),
+    d_designation varchar(30)
+    
+
+);
+
+
+CREATE TABLE medical_procedure(
+   code varchar(15) PRIMARY KEY,
+   name varchar(30),
+    cost int(15)
+    );
+
+CREATE TABLE patient(
+  p_id varchar(30),
+    p_name varchar(30),
+    p_diseases varchar(30)
+supervisor_doctor int(11)
+    
+   
+);
+ALTER TABLE medical_procedure MODIFY COLUMN cost Double(5,2)
+
+
+
+ALTER TABLE patient add FOREIGN KEY(supervisor_doctor) REFERENCES doctor(d_id)
+
+alter TABLE medical_procedure RENAME medical;
+ALTER TABLE patient CHANGE COLUMN supervisor_doctor supervisor varchar(30);
+
+INSERT INTO doctor VALUES (01122,"shihab","Medicine");
