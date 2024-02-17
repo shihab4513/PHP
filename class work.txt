@@ -1,0 +1,26 @@
+CREATE TABLE student (
+  s_id int(11) NOT NULL,
+  s_email varchar(30),
+  s_name varchar(30),
+  cgpa float,
+  mobile_no varchar(13),
+  course varchar(30)
+)
+AlTER table student ADD FOREIGN KEY(course) references course(c_code);
+AlTER table course ADD FOREIGN KEY(faculty) references teacher(t_email);
+create TABLE COURSE(
+       c_code varchar(30) PRIMARY KEY,
+    c_name varchar(30),faculty varchar(30)
+       
+
+);
+
+CREATE table teacher(
+    t_name varchar(30),
+    t_email varchar(30) PRIMARY key,
+    dept varchar(30),
+    salary float
+);
+
+AlTER table student ADD FOREIGN KEY(course) references course(c_code);
+AlTER table course ADD FOREIGN KEY(faculty) references teacher(t_email);
