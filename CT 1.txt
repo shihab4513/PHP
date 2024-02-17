@@ -1,0 +1,84 @@
+CREATE database game
+
+
+
+create TABLE region(
+   id int PRIMARY KEY NOT null,
+    region_name varchar(30)
+
+)
+
+
+create TABLE genre(
+   id int PRIMARY KEY NOT null,
+    genre_name varchar(30)
+
+)
+
+create TABLE games(
+   id int PRIMARY KEY NOT null,
+    genre_id int,
+    game_name varchar(30)
+    
+
+)
+
+      ALTER TABLE games add CONSTRAINT genre_fk FOREIGN KEY (genre_id) REFERENCES genre(id)
+
+create TABLE publisher(
+   id int PRIMARY KEY NOT null,
+    publisher_name varchar(30)
+    
+
+)
+
+
+
+create TABLE game_publisher(
+   id int PRIMARY KEY NOT null,
+    game_id int,
+    publisher_id int
+    
+
+)
+
+create TABLE platform(
+   id int PRIMARY KEY NOT null,
+    platform_name varchar(30)
+    
+
+)
+ALTER TABLE game_publisher add CONSTRAINT fk_2 FOREIGN KEY (game_id) REFERENCES games(id)
+ALTER TABLE game_publisher add CONSTRAINT fk_3 FOREIGN KEY (publisher_id) REFERENCES publisher(id)
+
+
+create TABLE game_platform(
+   id int PRIMARY KEY NOT null,
+    game_publisher_id int,
+    platform_id int,
+    release_year int
+    
+
+)
+ALTER TABLE game_platform add CONSTRAINT fk_4 FOREIGN KEY (game_publisher_id) REFERENCES game_publisher(id)
+ALTER TABLE game_platform add CONSTRAINT fk_5 FOREIGN KEY (platform_id) REFERENCES platform(id)
+
+create TABLE region_sales(
+   region_id int NOT null,
+    game_platform_id int NOT null,
+    num_sales int,
+    PRIMARY KEY(region_id,game_platform_id)
+    
+
+)
+ALTER TABLE region_sales add CONSTRAINT fk_6 FOREIGN KEY (region_id) REFERENCES region(id)
+
+
+ALTER TABLE region_sales add CONSTRAINT fk_7 FOREIGN KEY (game_platform_id) REFERENCES game_platform(id)
+ALTER TABLE game_publisher RENAME game_pub
+ALTER TABLE publisher CHANGE publisher_name pub_name VARCHAR(30) DEFAULT NULL;
+ALTER TABLE publisher add COLUMN email varchar(30)
+ALTER TABLE publisher add COLUMN address varchar(30)
+drop DATABASE game
+
+
